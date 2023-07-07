@@ -5,6 +5,9 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
     [SerializeField] private int health;
+    [SerializeField] private int cost;
+
+    public int Cost { get { return cost; } }
 
     // Start is called before the first frame update
     void Start()

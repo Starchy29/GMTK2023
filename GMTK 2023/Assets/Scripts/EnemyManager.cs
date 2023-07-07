@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField] private int currency;
+    [SerializeField] private GameObject commonEnemy;
+
     private List<GameObject> enemies;
     public List<GameObject> Enemies { get { return enemies; } }
 
@@ -22,5 +25,20 @@ public class EnemyManager : MonoBehaviour
 
     public void RemoveEnemy(GameObject enemy) {
         enemies.Remove(enemy);
+    }
+
+    public void SpawnCommon() {
+        SpawnEnemy(commonEnemy);
+    }
+
+    private void SpawnEnemy(GameObject prefab) {
+        int cost = prefab.GetComponent<EnemyScript>().Cost;
+        if(currency < cost) {
+            return;
+        }
+
+        currency -= cost;
+        GameObject enemy = Instantiate(prefab);
+        // enemy.transform.position = path start
     }
 }
