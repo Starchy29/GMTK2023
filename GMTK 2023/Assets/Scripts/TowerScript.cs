@@ -6,7 +6,7 @@ public class TowerScript : MonoBehaviour
 {
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private float range;
-    [SerializeField] private float shotsPerSecond;
+    [SerializeField] private float secondsPerShot;
 
     private GameObject target;
     private float shotTimer;
@@ -23,7 +23,7 @@ public class TowerScript : MonoBehaviour
         // check if the target is lost
         if(target != null && Vector3.Distance(target.transform.position, transform.position) > range) {
             target = null;
-            shotTimer = shotsPerSecond;
+            shotTimer = secondsPerShot;
         }
 
         if(target == null) {
@@ -43,7 +43,7 @@ public class TowerScript : MonoBehaviour
             // shoot at the target
             shotTimer -= Time.deltaTime;
             if(shotTimer <= 0) {
-                shotTimer += shotsPerSecond;
+                shotTimer += secondsPerShot;
                 GameObject bullet = Instantiate(bulletPrefab);
                 bullet.transform.position = transform.position;
                 bullet.GetComponent<Bullet>().SetDirection(target.transform.position - transform.position);

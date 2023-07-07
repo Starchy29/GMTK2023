@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     public List<GameObject> Enemies { get { return enemies; } }
 
     private static EnemyManager instance;
-    public static EnemyManager Instance { get; set; }
+    public static EnemyManager Instance { get { return instance; } }
 
     void Awake()
     {
