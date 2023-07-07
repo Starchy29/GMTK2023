@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyScript : MonoBehaviour
 {
+    [SerializeField] private int health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +16,13 @@ public class EnemyScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void TakeDamage(int damage) {
+        health -= damage;
+        if(health <= 0) {
+            EnemyManager.Instance.RemoveEnemy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }
