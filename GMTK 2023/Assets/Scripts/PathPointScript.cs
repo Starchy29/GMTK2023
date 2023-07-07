@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class PathPointScript : MonoBehaviour
 {
-    public PathPointScript prevPoint = null;
     public PathPointScript nextPoint = null;
-    public string name = "";
+    public Color color = Color.white;
+
+    private LineRenderer lineRenderer;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (prevPoint == null)
+        if (nextPoint != null)
         {
-            PathManager.addPath(name, this);
+            lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer.startColor = color;
+            lineRenderer.endColor = color;
+
+            lineRenderer.startWidth = transform.localScale.x;
+            lineRenderer.endWidth = transform.localScale.y;
+
+            lineRenderer.SetPosition(0, transform.position);
+            lineRenderer.SetPosition(1, nextPoint.transform.position);
         }
     }
 
     void OnDrawGizmos()
     {
         Gizmos.color = Color.white;
-        if (prevPoint != null)
-        {
-            Vector2 midpoint = (prevPoint.transform.position + transform.position) / 2;
-            Gizmos.DrawLine(midpoint, transform.position);
-        }
-
         if (nextPoint != null)
         {
-            Vector2 midpoint = (nextPoint.transform.position + transform.position) / 2;
-            Gizmos.DrawLine(transform.position, midpoint);
+            Gizmos.DrawLine(transform.position, nextPoint.transform.position);
         }
     }
 
