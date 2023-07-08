@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4906627314508893264}
   - component: {fileID: 4906627314508893271}
   - component: {fileID: 4906627314508893270}
+  - component: {fileID: 1940544968236378859}
   m_Layer: 0
   m_Name: Tank Enemy
   m_TagString: Untagged
@@ -76,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.13157706, g: 0.5283019, b: 0.18385686, a: 1}
+  m_Color: {r: 0.509434, g: 0.509434, b: 0.509434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -117,3 +118,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &1940544968236378859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4906627314508893267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22deee356d4148c4098b4402f16a4617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: e343690af02a167449170d3768e5e808, type: 3}
+  - {fileID: 21300000, guid: cb850648c4fcc1849ace6fe49b8c7444, type: 3}
+  - {fileID: 21300000, guid: bb472958c33e6474384b7b54bb722356, type: 3}
+  secondsPerSprite: 0.1

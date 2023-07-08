@@ -93,8 +93,8 @@ public class EnemyScript : MonoBehaviour
         transform.position += new Vector3(direction.x, direction.y, 0) * movementMagnitude;
 
         // Rotate towards next point
-        float vectorAngle = Mathf.Rad2Deg * Mathf.Atan(direction.x / direction.y);
-        transform.rotation = Quaternion.AngleAxis(vectorAngle, new Vector3(0,0,-1));
+        float vectorAngle = Mathf.Rad2Deg * Mathf.Atan2(direction.y, direction.x);
+        transform.rotation = Quaternion.Euler(0, 0, vectorAngle);
     }
 
     private void score()
