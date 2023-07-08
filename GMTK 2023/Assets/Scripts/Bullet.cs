@@ -10,7 +10,7 @@ public class Bullet : MonoBehaviour
     [SerializeField] private GameObject hitEffect;
 
     public void SetDirection(Vector2 direction) {
-        GetComponent<Rigidbody2D>().velocity = speed * direction;
+        GetComponent<Rigidbody2D>().velocity = speed * direction.normalized;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

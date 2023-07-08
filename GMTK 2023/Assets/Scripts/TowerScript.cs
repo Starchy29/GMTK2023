@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] protected GameObject bulletPrefab;
     [SerializeField] private float range;
     [SerializeField] private float secondsPerShot;
 
-    private GameObject target;
+    protected GameObject target;
     private float shotTimer;
 
     // Start is called before the first frame update
@@ -44,10 +44,14 @@ public class TowerScript : MonoBehaviour
             shotTimer -= Time.deltaTime;
             if(shotTimer <= 0) {
                 shotTimer += secondsPerShot;
-                GameObject bullet = Instantiate(bulletPrefab);
-                bullet.transform.position = transform.position;
-                bullet.GetComponent<Bullet>().SetDirection(target.transform.position - transform.position);
+                Shoot();
             }
         }
+    }
+
+    protected virtual void Shoot() {
+        GameObject bullet = Instantiate(bulletPrefab);
+        bullet.transform.position = transform.position;
+        bullet.GetComponent<Bullet>().SetDirection(target.transform.position - transform.position);
     }
 }
