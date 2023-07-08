@@ -46,6 +46,10 @@ public class TowerScript : MonoBehaviour
                 shotTimer += secondsPerShot;
                 Shoot();
             }
+
+            // look at the target
+            Vector2 lookDir = target.transform.position - transform.position;
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg);
         }
     }
 
