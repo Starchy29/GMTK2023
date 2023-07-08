@@ -9,6 +9,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject commonEnemy;
     [SerializeField] private GameObject fastEnemy;
     [SerializeField] private GameObject tankEnemy;
+    [SerializeField] private TMPro.TextMeshProUGUI currencyLabel;
+    [SerializeField] private TMPro.TextMeshProUGUI scoreLabel;
 
     private List<GameObject> enemies;
     public List<GameObject> Enemies { get { return enemies; } }
@@ -28,6 +30,8 @@ public class EnemyManager : MonoBehaviour
     {
         enemies = new List<GameObject>();
         instance = this;
+        currencyLabel.text = "$" + currency;
+        scoreLabel.text = "Goal: " + scoresLeft;
     }
 
     void Update() {
@@ -54,6 +58,7 @@ public class EnemyManager : MonoBehaviour
 
     public void Score() {
         scoresLeft--;
+        scoreLabel.text = "Goal: " + scoresLeft;
         if(scoresLeft <= 0) {
             Application.Quit();
         }
@@ -61,7 +66,7 @@ public class EnemyManager : MonoBehaviour
 
     // button functions
     private void BuyEnemy(GameObject prefab) {
-        if(enemyQueue.Count >= 5) {
+        if(enemyQueue.Count >= 7) {
             return;
         }
 
@@ -71,6 +76,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         currency -= cost;
+        currencyLabel.text = "$" + currency;
         enemyQueue.Enqueue(prefab);
     }
 
