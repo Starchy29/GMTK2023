@@ -18,7 +18,7 @@ public class TowerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        TowerManager.Instance.Towers.Add(this);
     }
 
     // Update is called once per frame

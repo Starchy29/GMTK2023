@@ -14,11 +14,5 @@ public class TowerManager : MonoBehaviour
     {
         towers = new List<TowerScript>();
         instance = this;
-
-        TowerScript[] allChildren = GetComponentsInChildren<TowerScript>();
-        foreach (TowerScript child in allChildren)
-        {
-            towers.Add(child);
-        }
     }
 }
