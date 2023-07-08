@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class TowerManager : MonoBehaviour
 {
+    [SerializeField] private GameObject webbedEffectObject;
+
+    public static GameObject WebbedEffectObject {  get { return instance.webbedEffectObject; } }
+
     private List<TowerScript> towers;
     public List<TowerScript> Towers { get { return towers; } }
 
