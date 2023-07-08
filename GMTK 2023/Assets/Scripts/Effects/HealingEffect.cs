@@ -27,7 +27,7 @@ public class HealingEffect : BasicAnimationScript
     protected override void Update()
     {
         base.Update();
-        transform.rotation = Quaternion.Inverse(transform.parent.transform.rotation);
+        transform.rotation = Quaternion.identity;
     }
 
     protected override void draw(float percentage)
