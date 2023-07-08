@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyManager : MonoBehaviour
 {
+    [SerializeField] private int scoresLeft;
     [SerializeField] private int currency;
     [SerializeField] private GameObject commonEnemy;
     [SerializeField] private GameObject fastEnemy;
@@ -19,11 +20,9 @@ public class EnemyManager : MonoBehaviour
     private Queue<GameObject> spawningEnemies = new Queue<GameObject>();
 
     private const float SECONDS_PER_SPAWN = 0.5f;
-    private const float SPAWN_INTERVAL = 3.0f;
+    private const float SPAWN_COOLDOWN = 3.0f;
     private float squadTimer;
-    private float secondsUntilSpwans;
-
-    private int scoresLeft = 10;
+    private float spawnCooldown;
 
     void Awake()
     {
@@ -32,20 +31,16 @@ public class EnemyManager : MonoBehaviour
     }
 
     void Update() {
-        secondsUntilSpwans -= Time.deltaTime;
-        if(secondsUntilSpwans <= 0) {
-            secondsUntilSpwans += SPAWN_INTERVAL;
-            spawningEnemies = enemyQueue;
-            enemyQueue = new Queue<GameObject>();
-            squadTimer = 0;
-        }
-
         if(spawningEnemies.Count > 0) {
             squadTimer -= Time.deltaTime;
             if(squadTimer <= 0) {
                 squadTimer += SECONDS_PER_SPAWN;
-                SpawnEnemy(spawningEnemies.Dequeue());
+                Instantiate(spawningEnemies.Dequeue()); // automatically places self at path start
             }
+        }
+
+        if(spawnCooldown > 0) {
+            spawnCooldown -= Time.deltaTime;
         }
     }
 
@@ -57,11 +52,14 @@ public class EnemyManager : MonoBehaviour
         enemies.Remove(enemy);
     }
 
-    private void SpawnEnemy(GameObject prefab) {
-        GameObject enemy = Instantiate(prefab);
-        // enemy.transform.position = path start;
+    public void Score() {
+        scoresLeft--;
+        if(scoresLeft <= 0) {
+            Application.Quit();
+        }
     }
 
+    // button functions
     private void BuyEnemy(GameObject prefab) {
         if(enemyQueue.Count >= 5) {
             return;
@@ -76,14 +74,6 @@ public class EnemyManager : MonoBehaviour
         enemyQueue.Enqueue(prefab);
     }
 
-    public void Score() {
-        scoresLeft--;
-        if(scoresLeft <= 0) {
-            Application.Quit();
-        }
-    }
-
-    // button functions
     public void BuyCommon() {
         BuyEnemy(commonEnemy);
     }
@@ -94,5 +84,16 @@ public class EnemyManager : MonoBehaviour
 
     public void BuyTank() {
         BuyEnemy(tankEnemy);
+    }
+
+    public void SpawnWave() {
+        if(spawnCooldown > 0) {
+            return;
+        }
+
+        spawningEnemies = enemyQueue;
+        enemyQueue = new Queue<GameObject>();
+        squadTimer = 0;
+        spawnCooldown = SPAWN_COOLDOWN;
     }
 }
