@@ -16,7 +16,7 @@ public class EnemyScript : MonoBehaviour
     private int maxHealth = 0;
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         EnemyManager.Instance.AddEnemy(gameObject);
 
@@ -28,7 +28,7 @@ public class EnemyScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (targetPoint != null)
         {
