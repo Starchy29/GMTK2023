@@ -70,11 +70,14 @@ public class TowerScript : MonoBehaviour
         bullet.GetComponent<Bullet>().SetDirection(target.transform.position - transform.position);
     }
 
-    public void Web(float durationS)
+    public void Web(float durationS, float animationDelayS)
     {
         isWebbed = true;
         webTimer = durationS;
 
-        Debug.Log("WEBBED " + transform.position);
+        WebbedEffectScript webbedEffect = Instantiate(TowerManager.WebbedEffectObject).GetComponent<WebbedEffectScript>();
+        webbedEffect.START_DELAY = animationDelayS;
+        webbedEffect.setCenter(transform.position);
+        webbedEffect.setEffectDuration(durationS);
     }
 }

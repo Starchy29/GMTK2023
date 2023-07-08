@@ -8,6 +8,8 @@ public class SpiderScript : EnemyScript
     public float WEB_RATE_S = 3;
     public float WEB_DURATION_S = 5;
 
+    public GameObject webShotEffectObject;
+
     private float webCooldown = 0;
 
     // Start is called before the first frame update
@@ -52,7 +54,12 @@ public class SpiderScript : EnemyScript
 
         if (closestTower == null) return false;
 
-        closestTower.Web(WEB_DURATION_S);
+        WebShotEffectScript webShot = Instantiate(webShotEffectObject).GetComponent<WebShotEffectScript>();
+        webShot.transform.position = transform.position;
+        webShot.setTravel(transform.position, closestTower.transform.position);
+
+        closestTower.Web(WEB_DURATION_S, webShot.DURATION);
+
         return true;
     }
 }
