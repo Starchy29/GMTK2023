@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 3402729308840109056}
   - component: {fileID: 7428628980952782832}
   - component: {fileID: 8209598507230882241}
+  - component: {fileID: 1813181853490907537}
+  - component: {fileID: 2376785918994379636}
   m_Layer: 0
   m_Name: Spider Enemy
   m_TagString: Untagged
@@ -27,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7544930973240364037}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.3738154, y: 0.49360073, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -73,9 +75,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.72699773, g: 0.24554996, b: 0.8773585, a: 1}
+  m_SortingOrder: 5
+  m_Sprite: {fileID: 21300000, guid: e343690af02a167449170d3768e5e808, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,3 +105,36 @@ MonoBehaviour:
   WEB_RANGE: 5
   WEB_RATE_S: 3
   WEB_DURATION_S: 5
+--- !u!114 &1813181853490907537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544930973240364037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22deee356d4148c4098b4402f16a4617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: e343690af02a167449170d3768e5e808, type: 3}
+  - {fileID: 21300000, guid: cb850648c4fcc1849ace6fe49b8c7444, type: 3}
+  - {fileID: 21300000, guid: bb472958c33e6474384b7b54bb722356, type: 3}
+  secondsPerSprite: 0.1
+--- !u!58 &2376785918994379636
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7544930973240364037}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.45

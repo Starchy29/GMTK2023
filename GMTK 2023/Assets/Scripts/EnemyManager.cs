@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject spiderEnemy;
     [SerializeField] private TMPro.TextMeshProUGUI currencyLabel;
     [SerializeField] private TMPro.TextMeshProUGUI scoreLabel;
+    [SerializeField] private Button[] buyButtons;
+    [SerializeField] private Button spawnButton;
 
     private List<GameObject> enemies;
     public List<GameObject> Enemies { get { return enemies; } }
@@ -27,6 +30,8 @@ public class EnemyManager : MonoBehaviour
     private const float SPAWN_COOLDOWN = 3.0f;
     private float squadTimer;
     private float spawnCooldown;
+
+    private const int MAX_PER_WAVE = 7;
 
     void Awake()
     {
@@ -48,6 +53,9 @@ public class EnemyManager : MonoBehaviour
         if(spawnCooldown > 0) {
             spawnCooldown -= Time.deltaTime;
         }
+        else if(enemyQueue.Count > 0) {
+            spawnButton.interactable = true;
+        }
     }
 
     public void AddEnemy(GameObject enemy) {
@@ -66,9 +74,15 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
+    private void UpdateBuyEnabled() {
+        foreach(Button button in buyButtons) {
+            button.interactable = enemyQueue.Count < MAX_PER_WAVE && int.Parse(button.transform.GetChild(0).GetComponent<TMPro.TextMeshProUGUI>().text[1] + "") <= currency;
+        }
+    }
+
     // button functions
     private void BuyEnemy(GameObject prefab) {
-        if(enemyQueue.Count >= 7) {
+        if(enemyQueue.Count >= MAX_PER_WAVE) {
             return;
         }
 
@@ -80,6 +94,11 @@ public class EnemyManager : MonoBehaviour
         currency -= cost;
         currencyLabel.text = "$" + currency;
         enemyQueue.Enqueue(prefab);
+
+        UpdateBuyEnabled();
+        if(spawnCooldown <= 0) {
+            spawnButton.interactable = true;
+        }
     }
 
     public void BuyCommon() {
@@ -113,5 +132,8 @@ public class EnemyManager : MonoBehaviour
         enemyQueue = new Queue<GameObject>();
         squadTimer = 0;
         spawnCooldown = SPAWN_COOLDOWN;
+
+        UpdateBuyEnabled();
+        spawnButton.interactable = false;
     }
 }
