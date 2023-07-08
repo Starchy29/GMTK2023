@@ -9,6 +9,8 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private GameObject commonEnemy;
     [SerializeField] private GameObject fastEnemy;
     [SerializeField] private GameObject tankEnemy;
+    [SerializeField] private GameObject healerEnemy;
+    [SerializeField] private GameObject spiderEnemy;
     [SerializeField] private TMPro.TextMeshProUGUI currencyLabel;
     [SerializeField] private TMPro.TextMeshProUGUI scoreLabel;
 
@@ -90,6 +92,16 @@ public class EnemyManager : MonoBehaviour
 
     public void BuyTank() {
         BuyEnemy(tankEnemy);
+    }
+
+    public void BuyHealer()
+    {
+        BuyEnemy(healerEnemy);
+    }
+
+    public void BuySpider()
+    {
+        BuyEnemy(spiderEnemy);
     }
 
     public void SpawnWave() {
