@@ -41,11 +41,11 @@ public class EnemyScript : MonoBehaviour
     private void move(float time)
     {
         // Sanity checks
-        if (targetPoint.nextPoint == null) return;
+        if (targetPoint == null) return;
         if (health <= 0) return;
 
         // Handle moving to next target point, or the end of the path
-        float distanceToTarget = Vector3.Distance(transform.position, targetPoint.transform.position);
+        float distanceToTarget = Vector2.Distance(transform.position, targetPoint.transform.position);
         if (distanceToTarget < TARGET_CLOSENESS)
         {
             if (targetPoint.nextPoint == null)
@@ -58,7 +58,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         // Continue walking towards the next path point
-        Vector3 direction = targetPoint.transform.position - transform.position;
+        Vector2 direction = targetPoint.transform.position - transform.position;
         direction.Normalize();
 
         // Do not move past the target
@@ -68,12 +68,17 @@ public class EnemyScript : MonoBehaviour
             movementMagnitude = distanceToTarget;
         }
 
-        transform.position += direction * movementMagnitude;
-        transform.rotation = Quaternion.Euler(direction);
+        transform.position += new Vector3(direction.x, direction.y, 0) * movementMagnitude;
+
+        float vectorAngle = Mathf.Rad2Deg * Mathf.Atan(direction.x / direction.y);
+        Debug.Log(vectorAngle);
+        transform.rotation = Quaternion.AngleAxis(vectorAngle, new Vector3(0,0,-1));
     }
 
     private void score()
     {
         // TODO - Code for when the enemy reaches the end
+        Debug.Log("SCORE");
+        Destroy(gameObject);
     }
 }
