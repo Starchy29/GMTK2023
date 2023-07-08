@@ -13,6 +13,8 @@ public class EnemyScript : MonoBehaviour
     private PathPointScript targetPoint = null;
     private float TARGET_CLOSENESS = 0.01f;
 
+    private int maxHealth = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +23,8 @@ public class EnemyScript : MonoBehaviour
         // always start at the start of the path
         targetPoint = GameObject.Find("Path").GetComponent<PathScript>().startingPoint;
         transform.position = targetPoint.transform.position;
+
+        maxHealth = health;
     }
 
     // Update is called once per frame
@@ -43,6 +47,15 @@ public class EnemyScript : MonoBehaviour
         if(health <= 0) {
             EnemyManager.Instance.RemoveEnemy(gameObject);
             Destroy(gameObject);
+        }
+    }
+
+    public void Heal(int amount)
+    {
+        health += amount;
+        if (health > maxHealth)
+        {
+            health = maxHealth;
         }
     }
 
@@ -81,7 +94,6 @@ public class EnemyScript : MonoBehaviour
 
         // Rotate towards next point
         float vectorAngle = Mathf.Rad2Deg * Mathf.Atan(direction.x / direction.y);
-        Debug.Log(vectorAngle);
         transform.rotation = Quaternion.AngleAxis(vectorAngle, new Vector3(0,0,-1));
     }
 
