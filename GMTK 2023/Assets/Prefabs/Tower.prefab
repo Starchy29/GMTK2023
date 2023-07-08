@@ -98,5 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2336012566285609011, guid: f4c9e2cc0b9e5794ea786d149b662970, type: 3}
-  range: 20
-  secondsPerShot: 1
+  range: 4
+  secondsPerShot: 0.5

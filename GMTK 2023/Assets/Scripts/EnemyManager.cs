@@ -19,9 +19,11 @@ public class EnemyManager : MonoBehaviour
     private Queue<GameObject> spawningEnemies = new Queue<GameObject>();
 
     private const float SECONDS_PER_SPAWN = 0.5f;
-    private const float SPAWN_INTERVAL = 5.0f;
+    private const float SPAWN_INTERVAL = 3.0f;
     private float squadTimer;
     private float secondsUntilSpwans;
+
+    private int scoresLeft = 10;
 
     void Awake()
     {
@@ -72,6 +74,13 @@ public class EnemyManager : MonoBehaviour
 
         currency -= cost;
         enemyQueue.Enqueue(prefab);
+    }
+
+    public void Score() {
+        scoresLeft--;
+        if(scoresLeft <= 0) {
+            Application.Quit();
+        }
     }
 
     // button functions

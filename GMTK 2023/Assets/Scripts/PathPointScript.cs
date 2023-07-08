@@ -15,6 +15,7 @@ public class PathPointScript : MonoBehaviour
         if (nextPoint != null)
         {
             lineRenderer = GetComponent<LineRenderer>();
+            lineRenderer.sortingOrder = -1;
             lineRenderer.startColor = color;
             lineRenderer.endColor = color;
 

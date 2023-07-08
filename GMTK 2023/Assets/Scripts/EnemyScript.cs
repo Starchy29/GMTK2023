@@ -17,6 +17,10 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
         EnemyManager.Instance.AddEnemy(gameObject);
+
+        // always start at the start of the path
+        targetPoint = GameObject.Find("Path").GetComponent<PathScript>().startingPoint;
+        transform.position = targetPoint.transform.position;
     }
 
     // Update is called once per frame
@@ -28,6 +32,7 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
+    // DEPRECATED
     public void setPath(PathPointScript startingPoint)
     {
         targetPoint = startingPoint;
@@ -82,8 +87,8 @@ public class EnemyScript : MonoBehaviour
 
     private void score()
     {
-        // TODO - Code for when the enemy reaches the end
-        Debug.Log("SCORE");
+        EnemyManager.Instance.Score();
+        EnemyManager.Instance.RemoveEnemy(gameObject);
         Destroy(gameObject);
     }
 }
