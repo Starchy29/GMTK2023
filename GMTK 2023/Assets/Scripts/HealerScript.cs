@@ -8,6 +8,8 @@ public class HealerScript : EnemyScript
     public int HEAL_AMOUNT = 1;
     public float HEAL_RADIUS = 5;
 
+    public HealPulseScript healPulseObject = null;
+
     private float healBurstCooldown = 0;
 
     // Start is called before the first frame update
@@ -42,6 +44,17 @@ public class HealerScript : EnemyScript
                 EnemyScript script = enemy.GetComponent<EnemyScript>();
                 script.Heal(HEAL_AMOUNT);
             }
+        }
+
+        // Draw animation
+        if (healPulseObject != null)
+        {
+            HealPulseScript pulse = Instantiate(healPulseObject);
+            Vector3 pulsePosition = pulse.transform.position;
+            pulsePosition.x = transform.position.x;
+            pulsePosition.y = transform.position.y;
+            pulse.transform.position = pulsePosition;
+            pulse.setEndRadius(HEAL_RADIUS);
         }
     }
 }

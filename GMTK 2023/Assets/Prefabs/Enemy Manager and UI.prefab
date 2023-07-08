@@ -2195,6 +2195,7 @@ MonoBehaviour:
   - {fileID: 8794764972021492010}
   - {fileID: 2625311882229942054}
   spawnButton: {fileID: 370781788857816352}
+  healingEffectObject: {fileID: 1666578925941334876, guid: bf0dd74ed8356b947834ef32437859ba, type: 3}
 --- !u!1 &8000048430481270809
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,11 +17,15 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Button[] buyButtons;
     [SerializeField] private Button spawnButton;
 
+    [SerializeField] private GameObject healingEffectObject;
+
     private List<GameObject> enemies;
     public List<GameObject> Enemies { get { return enemies; } }
 
     private static EnemyManager instance;
     public static EnemyManager Instance { get { return instance; } }
+
+    public static GameObject HealingEffectObject { get { return instance.healingEffectObject; } }
 
     private Queue<GameObject> enemyQueue = new Queue<GameObject>();
     private Queue<GameObject> spawningEnemies = new Queue<GameObject>();

@@ -57,6 +57,9 @@ public class EnemyScript : MonoBehaviour
         {
             health = maxHealth;
         }
+
+        HealingEffect healEffect = Instantiate(EnemyManager.HealingEffectObject).GetComponent<HealingEffect>();
+        healEffect.transform.parent = transform;
     }
 
     private void move(float time)
