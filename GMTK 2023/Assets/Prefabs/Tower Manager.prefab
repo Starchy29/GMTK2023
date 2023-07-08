@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c042ae20e692cab47b47307142ab634c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  webbedEffectObject: {fileID: 478508535795921268, guid: b173cac619ccfd142945266e01aef2a8, type: 3}
