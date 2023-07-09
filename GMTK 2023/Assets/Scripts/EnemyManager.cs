@@ -58,7 +58,8 @@ public class EnemyManager : MonoBehaviour
             squadTimer -= Time.deltaTime;
             if(squadTimer <= 0) {
                 squadTimer += SECONDS_PER_SPAWN;
-                Instantiate(spawningEnemies.Dequeue()); // automatically places self at path start
+                GameObject spawn = Instantiate(spawningEnemies.Dequeue()); // automatically places self at path start
+                enemies.Add(spawn);
             }
         }
 
@@ -70,7 +71,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         // check for win and lose
-        if(currency <= 0 && enemies.Count <= 0 && scoresLeft > 0) {
+        if(currency <= 0 && enemies.Count <= 0 && enemyQueue.Count <= 0 && spawningEnemies.Count <= 0 && scoresLeft > 0) {
             // loss
             transform.Find("Lose Menu").gameObject.SetActive(true);
         }
@@ -79,15 +80,15 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    public void AddEnemy(GameObject enemy) {
-        enemies.Add(enemy);
-    }
-
     public void RemoveEnemy(GameObject enemy) {
         enemies.Remove(enemy);
     }
 
     public void Score() {
+        if(scoresLeft <= 0) {
+            return;
+        }
+
         scoresLeft--;
         scoreLabel.text = "Goal: " + scoresLeft;
     }
@@ -169,7 +170,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     public void NextButton() {
-        int nextScene = SceneManager.GetActiveScene().buildIndex;
+        int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
         if(nextScene >= SceneManager.sceneCountInBuildSettings) {
             nextScene = 0;
         }
