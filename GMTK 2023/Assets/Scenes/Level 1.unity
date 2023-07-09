@@ -441,7 +441,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5622382142848566228, guid: 1cf58531724acc2479b6709c9eba3856, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.03
+      value: 7.78
       objectReference: {fileID: 0}
     - target: {fileID: 5622382142848566228, guid: 1cf58531724acc2479b6709c9eba3856, type: 3}
       propertyPath: m_LocalPosition.y
@@ -510,7 +510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1799775956240710949, guid: 17a5ba06e25795b4d9e6d1c46d4661ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.93
+      value: 5.62
       objectReference: {fileID: 0}
     - target: {fileID: 1799775956240710949, guid: 17a5ba06e25795b4d9e6d1c46d4661ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -576,10 +576,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6156303077486777778, guid: 6313e4c40ccba9c42885e06898b99176, type: 3}
-      propertyPath: m_text
-      value: $5
-      objectReference: {fileID: 0}
     - target: {fileID: 8000048430186352529, guid: 6313e4c40ccba9c42885e06898b99176, type: 3}
       propertyPath: m_Name
       value: Enemy Manager and UI
@@ -1059,7 +1055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4764342313480815204, guid: c5e3a15bee6e0444694b9cd9282bfc6a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.3
+      value: 6.13
       objectReference: {fileID: 0}
     - target: {fileID: 4764342313480815204, guid: c5e3a15bee6e0444694b9cd9282bfc6a, type: 3}
       propertyPath: m_LocalPosition.y

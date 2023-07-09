@@ -112,7 +112,7 @@ public class EnemyManager : MonoBehaviour
         }
 
         GameObject newPic = Instantiate(pic, transform);
-        newPic.GetComponent<RectTransform>().anchoredPosition = new Vector2(-30 + 50 * queuePics.Count, -115);
+        newPic.GetComponent<RectTransform>().anchoredPosition = new Vector2(-30 + 50 * queuePics.Count, -135);
         queuePics.Add(newPic);
     }
 
