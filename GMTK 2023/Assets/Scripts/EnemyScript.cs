@@ -19,8 +19,6 @@ public class EnemyScript : MonoBehaviour
     // Start is called before the first frame update
     protected void Start()
     {
-        EnemyManager.Instance.AddEnemy(gameObject);
-
         // always start at the start of the path
         if (targetPoint == null)
         {
