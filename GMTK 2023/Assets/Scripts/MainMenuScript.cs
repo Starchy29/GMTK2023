@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour
 {
@@ -85,5 +86,9 @@ public class MainMenuScript : MonoBehaviour
         enemy.setPath(pathPoint);
         enemy.transform.position = start;
         enemy.specialMenuGuy();
+    }
+
+    public void StartButton() {
+        SceneManager.LoadScene(1);
     }
 }
