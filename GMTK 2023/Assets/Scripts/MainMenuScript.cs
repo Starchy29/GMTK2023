@@ -93,4 +93,8 @@ public class MainMenuScript : MonoBehaviour
     public void StartButton() {
         SceneManager.LoadScene(1);
     }
+
+    public void QuitButton() {
+        Application.Quit();
+    }
 }
