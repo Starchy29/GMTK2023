@@ -14,6 +14,7 @@ public class EnemyScript : MonoBehaviour
     private float TARGET_CLOSENESS = 0.01f;
 
     private int maxHealth = 0;
+    protected bool isSpecialMenuGuy = false;
 
     // Start is called before the first frame update
     protected void Start()
@@ -21,8 +22,11 @@ public class EnemyScript : MonoBehaviour
         EnemyManager.Instance.AddEnemy(gameObject);
 
         // always start at the start of the path
-        targetPoint = GameObject.Find("Path").GetComponent<PathScript>().startingPoint;
-        transform.position = targetPoint.transform.position;
+        if (targetPoint == null)
+        {
+            targetPoint = GameObject.Find("Path").GetComponent<PathScript>().startingPoint;
+            transform.position = targetPoint.transform.position;
+        }
 
         maxHealth = health;
     }
@@ -36,7 +40,6 @@ public class EnemyScript : MonoBehaviour
         }
     }
 
-    // DEPRECATED
     public void setPath(PathPointScript startingPoint)
     {
         targetPoint = startingPoint;
@@ -105,5 +108,15 @@ public class EnemyScript : MonoBehaviour
         EnemyManager.Instance.Score();
         EnemyManager.Instance.RemoveEnemy(gameObject);
         Destroy(gameObject);
+
+        if (isSpecialMenuGuy)
+        {
+            Destroy(targetPoint.gameObject);
+        }
+    }
+
+    public void specialMenuGuy()
+    {
+        isSpecialMenuGuy = true;
     }
 }

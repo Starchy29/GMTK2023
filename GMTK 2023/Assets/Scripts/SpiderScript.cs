@@ -39,6 +39,8 @@ public class SpiderScript : EnemyScript
         float closestDistanceSquared = float.MaxValue;
         TowerScript closestTower = null;
 
+        if (isSpecialMenuGuy) return false;
+
         // Find the closest non-webbed tower in range
         foreach (TowerScript tower in TowerManager.Instance.Towers)
         {

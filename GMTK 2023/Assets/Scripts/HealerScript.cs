@@ -33,6 +33,8 @@ public class HealerScript : EnemyScript
 
     private void healBurst()
     {
+        if (isSpecialMenuGuy) return;
+
         float radSquared = HEAL_RADIUS * HEAL_RADIUS;
         foreach (GameObject enemy in EnemyManager.Instance.Enemies)
         {
