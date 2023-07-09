@@ -105,6 +105,7 @@ MonoBehaviour:
   WEB_RANGE: 5
   WEB_RATE_S: 3
   WEB_DURATION_S: 5
+  webShotEffectObject: {fileID: 6471987968524942119, guid: 2fa70db2ad67db444a68a6bd91d8f287, type: 3}
 --- !u!114 &1813181853490907537
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class BasicAnimationScript : MonoBehaviour
 {
+    public float START_DELAY = 0f;
     public float DURATION = 0.5f;
     public float HANG_TIME = 0.25f;
 
@@ -20,19 +21,25 @@ public abstract class BasicAnimationScript : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if (timer > (DURATION + HANG_TIME))
+        if (timer > (START_DELAY + DURATION + HANG_TIME))
         {
             finish();
             return;
         }
 
-        if (timer > DURATION)
+        if (timer > (START_DELAY + DURATION))
         {
             draw(1f);
             return;
         }
 
-        draw(timer / DURATION);
+        if (timer > START_DELAY)
+        {
+            draw((timer - START_DELAY) / DURATION);
+            return;
+        }
+
+        draw(0f);
     }
 
     protected virtual void finish()

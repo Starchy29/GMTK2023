@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &129970140515906628
+--- !u!1 &478508535795921268
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 129970140515906630}
-  - component: {fileID: 129970140515906631}
-  - component: {fileID: 129970140515906624}
-  - component: {fileID: 129970140515906625}
-  - component: {fileID: 4531928738635737850}
+  - component: {fileID: 478508535795921270}
+  - component: {fileID: 478508535795921271}
+  - component: {fileID: 8417856112142669138}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: WebbedEffect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &129970140515906630
+--- !u!4 &478508535795921270
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129970140515906628}
+  m_GameObject: {fileID: 478508535795921268}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.84, y: 0.99, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
+  m_LocalPosition: {x: -5.45, y: -2.51, z: -5}
+  m_LocalScale: {x: 0.5526, y: 0.5526, z: 0.5526}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &129970140515906631
+--- !u!212 &478508535795921271
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129970140515906628}
+  m_GameObject: {fileID: 478508535795921268}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -75,63 +73,32 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
-  m_Sprite: {fileID: 21300000, guid: d4c11bc2f542760458964d9cad20e182, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: a36eb249a823a984eb44d4231a7757fd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.49019608}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &129970140515906624
+--- !u!114 &8417856112142669138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129970140515906628}
+  m_GameObject: {fileID: 478508535795921268}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1475ef6cf99b60c42a7adf0fa05bfbf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 14745bade073e3f4f8d9e26d93b8551e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 6
-  speed: 2
-  cost: 1
---- !u!58 &129970140515906625
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129970140515906628}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
---- !u!114 &4531928738635737850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129970140515906628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 22deee356d4148c4098b4402f16a4617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: d4c11bc2f542760458964d9cad20e182, type: 3}
-  - {fileID: 21300000, guid: 8a32a28e4fdb80049be5bc9a735d02f1, type: 3}
-  - {fileID: 21300000, guid: 30ed26649e6506349915bcd1a76555c9, type: 3}
-  secondsPerSprite: 0.1
+  DURATION: 0.5
+  HANG_TIME: 0.25
+  FINAL_SIZE: 0.5
+  DISTANCE: 0.5
+  COUNT: 3
