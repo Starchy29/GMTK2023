@@ -17,6 +17,13 @@ public class EnemyManager : MonoBehaviour
     [SerializeField] private Button[] buyButtons;
     [SerializeField] private Button spawnButton;
 
+    [SerializeField] private GameObject cockroachPic;
+    [SerializeField] private GameObject antPic;
+    [SerializeField] private GameObject beetlePic;
+    [SerializeField] private GameObject spiderPic;
+    [SerializeField] private GameObject ladybugPic;
+    private List<GameObject> queuePics = new List<GameObject>();
+
     [SerializeField] private GameObject healingEffectObject;
 
     private List<GameObject> enemies;
@@ -85,7 +92,7 @@ public class EnemyManager : MonoBehaviour
     }
 
     // button functions
-    private void BuyEnemy(GameObject prefab) {
+    private void BuyEnemy(GameObject prefab, GameObject pic) {
         if(enemyQueue.Count >= MAX_PER_WAVE) {
             return;
         }
@@ -103,28 +110,32 @@ public class EnemyManager : MonoBehaviour
         if(spawnCooldown <= 0) {
             spawnButton.interactable = true;
         }
+
+        GameObject newPic = Instantiate(pic, transform);
+        newPic.GetComponent<RectTransform>().anchoredPosition = new Vector2(-30 + 50 * queuePics.Count, -115);
+        queuePics.Add(newPic);
     }
 
     public void BuyCommon() {
-        BuyEnemy(commonEnemy);
+        BuyEnemy(commonEnemy, cockroachPic);
     }
 
     public void BuyFast() {
-        BuyEnemy(fastEnemy);
+        BuyEnemy(fastEnemy, antPic);
     }
 
     public void BuyTank() {
-        BuyEnemy(tankEnemy);
+        BuyEnemy(tankEnemy, beetlePic);
     }
 
     public void BuyHealer()
     {
-        BuyEnemy(healerEnemy);
+        BuyEnemy(healerEnemy, ladybugPic);
     }
 
     public void BuySpider()
     {
-        BuyEnemy(spiderEnemy);
+        BuyEnemy(spiderEnemy, spiderPic);
     }
 
     public void SpawnWave() {
@@ -139,5 +150,10 @@ public class EnemyManager : MonoBehaviour
 
         UpdateBuyEnabled();
         spawnButton.interactable = false;
+
+        foreach(GameObject pic in queuePics) {
+            Destroy(pic);
+        }
+        queuePics = new List<GameObject>();
     }
 }
