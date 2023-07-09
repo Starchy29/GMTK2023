@@ -5,7 +5,6 @@ using UnityEngine;
 public class PathPointScript : MonoBehaviour
 {
     public PathPointScript nextPoint = null;
-    public Color color = Color.white;
 
     private LineRenderer lineRenderer;
 
@@ -14,10 +13,11 @@ public class PathPointScript : MonoBehaviour
     {
         if (nextPoint != null)
         {
+            SpriteRenderer sprite = GetComponent<SpriteRenderer>();
             lineRenderer = GetComponent<LineRenderer>();
             lineRenderer.sortingOrder = -1;
-            lineRenderer.startColor = color;
-            lineRenderer.endColor = color;
+            lineRenderer.startColor = sprite.color;
+            lineRenderer.endColor = sprite.color;
 
             lineRenderer.startWidth = transform.localScale.x;
             lineRenderer.endWidth = transform.localScale.y;
