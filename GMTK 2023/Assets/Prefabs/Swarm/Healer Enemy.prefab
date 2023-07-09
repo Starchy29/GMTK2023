@@ -102,7 +102,7 @@ MonoBehaviour:
   health: 4
   speed: 2
   cost: 5
-  HEAL_RATE_S: 5
+  HEAL_RATE_S: 4
   HEAL_AMOUNT: 1
   HEAL_RADIUS: 3
   healPulseObject: {fileID: 314791853083488130, guid: 0d1d70f555e3c4741b182df04b35e69e, type: 3}
