@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class EnemyManager : MonoBehaviour
 {
@@ -67,6 +68,15 @@ public class EnemyManager : MonoBehaviour
         else if(enemyQueue.Count > 0) {
             spawnButton.interactable = true;
         }
+
+        // check for win and lose
+        if(currency <= 0 && enemies.Count <= 0 && scoresLeft > 0) {
+            // loss
+            transform.Find("Lose Menu").gameObject.SetActive(true);
+        }
+        else if(scoresLeft <= 0) {
+            transform.Find("Win Menu").gameObject.SetActive(true);
+        }
     }
 
     public void AddEnemy(GameObject enemy) {
@@ -80,9 +90,6 @@ public class EnemyManager : MonoBehaviour
     public void Score() {
         scoresLeft--;
         scoreLabel.text = "Goal: " + scoresLeft;
-        if(scoresLeft <= 0) {
-            Application.Quit();
-        }
     }
 
     private void UpdateBuyEnabled() {
@@ -155,5 +162,21 @@ public class EnemyManager : MonoBehaviour
             Destroy(pic);
         }
         queuePics = new List<GameObject>();
+    }
+
+    public void MenuButton() {
+        SceneManager.LoadScene(0);
+    }
+
+    public void NextButton() {
+        int nextScene = SceneManager.GetActiveScene().buildIndex;
+        if(nextScene >= SceneManager.sceneCountInBuildSettings) {
+            nextScene = 0;
+        }
+        SceneManager.LoadScene(nextScene);
+    }
+
+    public void RetryButton() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
