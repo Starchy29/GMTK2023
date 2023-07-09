@@ -42,10 +42,14 @@ public class MainMenuScript : MonoBehaviour
 
     private Vector3 randomOutsidePoint()
     {
-        int minX = -10;
-        int maxX = -minX;
-        int minY = -6;
-        int maxY = -minY;
+        float aspect = (float)Screen.width / Screen.height;
+        float worldHeight = Camera.main.orthographicSize * 2;
+        float worldWidth = worldHeight * aspect;
+
+        float minX = -(worldWidth / 2) - 1;
+        float maxX = -minX;
+        float minY = -(worldHeight / 2) - 1;
+        float maxY = -minY;
 
         if (Random.value >= 0.5f)
         {
@@ -71,8 +75,6 @@ public class MainMenuScript : MonoBehaviour
 
     private void spawnRandom()
     {
-
-
         // Get a random enemy type
         GameObject randomEnemy = randomEnemies[Mathf.RoundToInt(Random.Range(0, randomEnemies.Length))];
         Vector3 start = randomOutsidePoint();
